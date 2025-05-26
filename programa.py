@@ -56,7 +56,7 @@ def main():
                     variacoes_correspondentes = obter_variacoes_correspondentes(circuito, tv_defeituosa)
 
                     if len(variacoes_correspondentes) > 0:
-                        print('\nPossiveis falhas que geram a Tabela Verdade defeituosa: ')
+                        print('\nPossíveis falhas que geram a Tabela Verdade defeituosa: ')
                         for indice, cod_variacao in enumerate(variacoes_correspondentes):
                             print('- ' +  obter_descricao_da_falha(cod_variacao, circuito['gates']))
                     else:
@@ -239,7 +239,7 @@ def obter_descricao_da_falha(codigo, gates):
     descricao = ''
 
     if codigo == 0:
-        return 'circuito sadío'
+        return 'circuito sadio'
     
     ternario = tern(codigo)
     ternario = ternario.rjust(len(gates), '0')
