@@ -230,7 +230,7 @@ def obter_variacoes_correspondentes(circuito, tv):
     variacoes_correspondentes = []
 
     for cod in range(3 ** len(circuito['gates'])):
-        if tv == obter_tv(obter_variacao_do_circuito(circuito, cod)):
+        if comparar_tvs(tv, obter_tv(obter_variacao_do_circuito(circuito, cod))):
             variacoes_correspondentes.append(cod)
 
     return variacoes_correspondentes
@@ -277,6 +277,12 @@ def verificar_circuito(caminho_arquivo):
 
     except (SyntaxError, ValueError):
         return False
+
+def comparar_tvs(tv1, tv2):
+    matriz1_ordenada = [tv1[chave] for chave in sorted(tv1.keys())]
+    matriz2_ordenada = [tv2[chave] for chave in sorted(tv2.keys())]
+
+    return sorted(zip(*matriz1_ordenada)) == sorted(zip(*matriz2_ordenada))
 
 if __name__ == '__main__':
     main()
